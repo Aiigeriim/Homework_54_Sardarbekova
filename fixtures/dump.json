@@ -32,6 +32,14 @@
   }
 },
 {
+  "model": "webapp.category",
+  "pk": 9,
+  "fields": {
+    "title": "Драгоценный металл",
+    "description": "ювелир"
+  }
+},
+{
   "model": "webapp.product",
   "pk": 2,
   "fields": {
@@ -146,6 +154,19 @@
     "updated_at": "2025-06-30T19:42:43.328Z",
     "price": "350600.00",
     "image": "https://i.pinimg.com/736x/21/bc/74/21bc74be4b58ce98fe276a20ff75bbe4.jpg"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 19,
+  "fields": {
+    "title": "Золото",
+    "description": "Золото – это красивый, желтый, благородный металл, известный своей редкостью, прочностью и уникальным блеском",
+    "category": 9,
+    "created_at": "2025-07-01T12:01:33.575Z",
+    "updated_at": "2025-07-01T12:01:33.576Z",
+    "price": "3500000.00",
+    "image": "https://i.pinimg.com/736x/09/d6/74/09d67441df2c53903e9c10bd6d58c794.jpg"
   }
 }
 ]

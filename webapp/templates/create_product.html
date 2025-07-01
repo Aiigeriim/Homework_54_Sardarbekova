@@ -20,9 +20,9 @@
     <input type="url" id="imageUrl" name="image" placeholder="https://example.com/image.jpg" required>
     <br/>
     <br/>
-    <select name="category">
+    <select name="category_id">
         {% for category in categories %}
-        <option placeholder="Категория" value="">{{ category.title }}</option>
+        <option placeholder="Категория" value="{{ category.id }}">{{ category.title }}</option>
         {% endfor %}
     </select>
     <br/>
@@ -31,7 +31,7 @@
     <textarea name="description" rows="3" style="width: 50%; resize: vertical;" placeholder="Описание"></textarea>
     <br/>
     <br/>
-    <input type="submit" value="Send"/>
+    <input type="submit" class="btn btn-success" value="Добавить позицию"/>
 </form>
 </div>
 

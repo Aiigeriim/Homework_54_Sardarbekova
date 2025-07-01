@@ -13,13 +13,11 @@ def add_product(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         price = request.POST.get('price')
-        image = request.FILES.get('image')
+        image = request.POST.get('image')
         description = request.POST.get('description')
-        # created_at = request.POST.get('created_at')
-        # updated_at = request.POST.get('updated_at')
-
-        product = Product.objects.create(title=title, price=price, image=image, description=description)
-        return redirect('detail.html', pk=product.pk )
+        category_id = request.POST.get('category_id')
+        product = Product.objects.create(title=title, price=price, image=image, category_id=category_id, description=description)
+        return redirect('product_detail', pk=product.pk )
     else:
         categories = Category.objects.all()
         return render(request,'create_product.html', {'categories': categories})
@@ -34,4 +32,4 @@ def add_category(request):
         return render(request,'create_category.html')
 def detail(request, *args, pk, **kwargs):
     product = get_object_or_404(Product, id=pk)
-    return render(request, 'detail.html', {'product': product})
+    return render(request, 'detail_product.html', {'product': product})
