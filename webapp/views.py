@@ -6,7 +6,7 @@ from webapp.models import Category, Product
 
 
 def index(request):
-    products = models.Product.objects.all()
+    products = models.Product.objects.filter(rest__gt=0).order_by('-category', 'title')
     return render(request, 'index.html', {'products': products})
 
 def add_product(request):
