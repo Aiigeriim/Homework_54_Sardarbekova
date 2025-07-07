@@ -31,5 +31,5 @@ def add_category(request):
     else:
         return render(request,'create_category.html')
 def detail(request, *args, pk, **kwargs):
-    product = get_object_or_404(Product, id=pk)
+    product = get_object_or_404(Product, pk=pk)
     return render(request, 'detail_product.html', {'product': product})

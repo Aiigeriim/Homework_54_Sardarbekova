@@ -1,4 +1,4 @@
-from django.contrib import admin
+
 from django.contrib import admin
 from webapp.models import Category, Product
 
@@ -18,6 +18,6 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ['created_at', 'category']
     search_fields = ['title']
     fields = ['title', 'price', 'description', 'category', 'created_at', 'image']
-    readonly_fields = ['created_at', 'updated_at']
+    readonly_fields = ['created_at']
 
 admin.site.register(Product, ProductAdmin)

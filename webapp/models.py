@@ -19,8 +19,8 @@ class Product(models.Model):
     description = models.TextField(null=True, blank=True, verbose_name='Описание')
     category = models.ForeignKey('webapp.Category', on_delete=models.RESTRICT, verbose_name='Категория', related_name='products')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
-    updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата редактирования')
-    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
+    #quantity = models.IntegerField(verbose_name='Количество', min_value=0)
+    price = models.DecimalField(max_digits=7, decimal_places=2, verbose_name='Цена')
     image = models.URLField(max_length=300, verbose_name='Картинка')
 
     def __str__(self):
