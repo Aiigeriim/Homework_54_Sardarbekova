@@ -15,6 +15,7 @@
             <ul class="list-group list-group-flush">
             <li class="list-group-item">{{ product.category.title }}</li>
             <li class="list-group-item">{{ product.price }} $</li>
+                <li class="list-group-item">Остаток: {{ product.rest }}</li>
                 <a href="{% url 'product_detail' product.pk %}" class="card-link" style="text-decoration: none; padding-left: 5px">Детали</a>
         </ul>
     </div>
