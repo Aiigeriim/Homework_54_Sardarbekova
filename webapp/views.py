@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 
 from webapp import models
+from webapp.forms import ProductForm
 from webapp.models import Category, Product
 
 
@@ -33,3 +34,22 @@ def add_category(request):
 def detail(request, *args, pk, **kwargs):
     product = get_object_or_404(Product, pk=pk)
     return render(request, 'detail_product.html', {'product': product})
+
+def update_product(request, *args, pk, **kwargs):
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == "POST":
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            product.title = form.cleaned_data.get('title')
+            product.description = form.cleaned_data.get('description')
+            product.category = form.cleaned_data.get('category')
+            product.rest = form.cleaned_data.get('rest')
+            product.price = form.cleaned_data.get('price')
+            product.image = form.cleaned_data.get('image')
+            product.save()
+            return redirect('product_detail', pk=product.pk)
+        else:
+            return render(request, 'update_product.html', {'form': form})
+    else:
+        form = ProductForm(initial={'title': product.title, 'description': product.description, 'category': product.category, 'rest': product.rest, 'price': product.price, 'image': product.image})
+        return render(request, 'update_product.html', {'form': form})

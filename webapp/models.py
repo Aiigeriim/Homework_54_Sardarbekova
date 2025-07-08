@@ -20,9 +20,7 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     rest = models.IntegerField(
         verbose_name='Количество',
-        validators=[MinValueValidator(0)],
-        null=True,
-        blank=True
+        validators=[MinValueValidator(0)]
     )
     price = models.DecimalField(max_digits=7, decimal_places=2, verbose_name='Цена')
     image = models.URLField(max_length=300, verbose_name='Картинка')

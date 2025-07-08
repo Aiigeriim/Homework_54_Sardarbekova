@@ -1,0 +1,39 @@
+{% csrf_token %}
+
+<p><label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label></p>
+{% for error in form.title.errors %}
+   <p class="text-danger">{{ error }}</p>
+{% endfor %}
+<p>{{ form.title }}</p>
+
+<p><label for="{{ form.description.id_for_label }}">{{ form.description.label }}</label></p>
+{% for error in form.description.errors %}
+   <p class="text-danger">{{ error }}</p>
+{% endfor %}
+<p>{{ form.description }}</p>
+
+<p><label for="{{ form.category.id_for_label }}">{{ form.category.label }}</label></p>
+{% for error in form.category.errors %}
+   <p class="text-danger">{{ error }}</p>
+{% endfor %}
+<p>{{ form.category }}</p>
+
+<p><label for="{{ form.rest.id_for_label }}">{{ form.rest.label }}</label></p>
+{% for error in form.rest.errors %}
+   <p class="text-danger">{{ error }}</p>
+{% endfor %}
+<p>{{ form.rest }}</p>
+
+<p><label for="{{ form.image.id_for_label }}">{{ form.image.label }}</label></p>
+{% for error in form.image.errors %}
+   <p class="text-danger">{{ error }}</p>
+{% endfor %}
+<p>{{ form.image }}</p>
+
+<p><label for="{{ form.price.id_for_label }}">{{ form.price.label }}</label></p>
+{% for error in form.price.errors %}
+   <p class="text-danger">{{ error }}</p>
+{% endfor %}
+<p>{{ form.price }}</p>
+
+     <input class="btn btn-success" type="submit" value="{{ btn_text }}"/>
