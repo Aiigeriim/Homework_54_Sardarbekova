@@ -10,18 +10,29 @@ def index(request):
     products = models.Product.objects.filter(rest__gt=0).order_by('-category', 'title')
     return render(request, 'index.html', {'products': products})
 
+
+
 def add_product(request):
-    if request.method == 'POST':
-        title = request.POST.get('title')
-        price = request.POST.get('price')
-        image = request.POST.get('image')
-        description = request.POST.get('description')
-        category_id = request.POST.get('category_id')
-        product = Product.objects.create(title=title, price=price, image=image, category_id=category_id, description=description)
-        return redirect('product_detail', pk=product.pk )
+    if request.method == "POST":
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data.get('title')
+            price = form.cleaned_data.get('price')
+            image = form.cleaned_data.get('image')
+            description = form.cleaned_data.get('description')
+            category = form.cleaned_data.get('category')
+            product = Product.objects.create(title=title, price=price, image=image, category=category,
+                                             description=description)
+            return redirect('product_detail', pk=product.pk)
+        else:
+            return render(request, 'create_product.html', {"form": form})
     else:
+        form = ProductForm()
         categories = Category.objects.all()
-        return render(request,'create_product.html', {'categories': categories})
+        return render(request, 'create_product.html', context={"form": form, "categories": categories})
+
+
+
 
 def add_category(request):
     if request.method == 'POST':
