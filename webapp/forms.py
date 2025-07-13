@@ -38,7 +38,5 @@ class ProductForm(forms.ModelForm):
         }
 
 
-class SearchForm(forms.Form):
-    product_name = forms.CharField(label='Поиск по названию', required=False, widget=widgets.Input(attrs={'class': 'form-control'}))
 
 

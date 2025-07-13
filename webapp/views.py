@@ -21,7 +21,8 @@ def add_product(request):
             image = form.cleaned_data.get('image')
             description = form.cleaned_data.get('description')
             category = form.cleaned_data.get('category')
-            product = Product.objects.create(title=title, price=price, image=image, category=category,
+            rest = form.cleaned_data.get('rest')
+            product = Product.objects.create(rest=rest, title=title, price=price, image=image, category=category,
                                              description=description)
             return redirect('product_detail', pk=product.pk)
         else:
